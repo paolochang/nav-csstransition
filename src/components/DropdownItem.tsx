@@ -11,7 +11,12 @@ const Item = styled.a`
   fill: ${(porps) => porps.theme.textColor};
   color: ${(props) => props.theme.textColor};
   margin: 4px 0px;
+  transition: background 10s;
+  &:hover {
+    background-color: #525357;
+  }
 `;
+
 const MenuDesc = styled.div`
   display: flex;
   flex-direction: center;
@@ -41,13 +46,26 @@ const RightIcon = styled.span`
 `;
 
 interface Props {
+  setActiveMenu?: any;
+  gotoMenu?: any;
   leftIcon?: any;
   rightIcon?: any;
 }
 
-const DropdownItem: React.FC<Props> = ({ leftIcon, rightIcon, children }) => {
+const DropdownItem: React.FC<Props> = ({
+  gotoMenu,
+  setActiveMenu,
+  leftIcon,
+  rightIcon,
+  children,
+}) => {
+  const onClickMenuItem = (e: any) => {
+    e.preventDefault();
+    setActiveMenu(gotoMenu);
+  };
+
   return (
-    <Item href="">
+    <Item href="" onClick={onClickMenuItem}>
       <MenuDesc>
         <IconWrapper>
           <LeftIcon>{leftIcon}</LeftIcon>

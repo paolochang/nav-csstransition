@@ -22,9 +22,9 @@ export const defaultTheme: DefaultTheme = {
 };
 
 export const lightTheme = {
-  bg: "#242526",
-  bgAccent: "#484a4d",
-  textColor: "#dadce1",
+  bg: "gray",
+  bgAccent: "lightgray",
+  textColor: "black",
   navSize: "60px",
   speed: "500ms",
   common: {

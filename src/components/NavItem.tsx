@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Item = styled.li`
@@ -35,14 +35,21 @@ const IconDiv = styled.div`
 
 interface Props {
   icon: any;
+  isOpen?: boolean;
+  setIsOpen?: any;
+  setActiveMenu?: any;
 }
 
-const NavItem: React.FC<Props> = ({ icon, children }) => {
-  const [open, setOpen] = useState(false);
-
+const NavItem: React.FC<Props> = ({
+  icon,
+  isOpen,
+  setIsOpen,
+  setActiveMenu,
+  children,
+}) => {
   const toggleMenu = () => {
-    console.log(open);
-    setOpen(!open);
+    if (isOpen) setActiveMenu("main");
+    setIsOpen((prev: any) => !prev);
   };
 
   return (
@@ -50,7 +57,7 @@ const NavItem: React.FC<Props> = ({ icon, children }) => {
       <IconClick onClick={toggleMenu}>
         <IconDiv>{icon}</IconDiv>
       </IconClick>
-      {open && children}
+      {isOpen && children}
     </Item>
   );
 };
